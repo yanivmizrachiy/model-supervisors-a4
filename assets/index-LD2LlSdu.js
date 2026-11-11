@@ -44,14 +44,8 @@
             <td>${e.instructors.join(` / `)}</td>
             <td>${V(e.classes.length)}</td>
           </tr>`)}</tbody>
-      </table>`})}),t.forEach((e,t)=>{let n=[e];s.push({id:`schools-${t+1}`,accent:i(e),title:e.name,subtitle:y`<p class="head-sub">סמל מוסד <span class="num" dir="ltr">${e.symbol}</span></p>`,side:y`<div class="head-side"><p class="head-supervisor" style="--row-accent:${i(e)}">${o(e.supervisors)}</p></div>`,body:y`${n.map(e=>{let t=[];for(let n of e.classes){let e=t[t.length-1];e&&e.grade===n.grade?e.rows.push(n):t.push({grade:n.grade,rows:[n]})}return y`<section class="school-block" id="${z(e.symbol)}" style="--accent:${i(e)}">
-          <table class="data facts">
-            <tbody>
-              <tr><th>רשות</th><td>${e.district}</td></tr>
-              <tr><th>רכז/ת</th><td>${e.coordinators.join(` / `)}</td></tr>
-              ${e.instructors.length>0?y`<tr><th>מדריך/ה</th><td>${e.instructors.join(` / `)}</td></tr>`:``}
-            </tbody>
-          </table>
+      </table>`})}),t.forEach((e,t)=>{let n=[e];s.push({id:`schools-${t+1}`,accent:i(e),title:e.name,titleHtml:y`${e.name}${e.coordinators.length>0?y` <span class="head-coordinator">רכז/ת ${e.coordinators.join(` / `)}</span>`:``}`,subtitle:y`<p class="head-sub">סמל מוסד <span class="num" dir="ltr">${e.symbol}</span></p>`,side:y`<div class="head-side"><p class="head-supervisor" style="--row-accent:${i(e)}">${o(e.supervisors)}</p><p class="head-district">${e.district}</p></div>`,body:y`${n.map(e=>{let t=[];for(let n of e.classes){let e=t[t.length-1];e&&e.grade===n.grade?e.rows.push(n):t.push({grade:n.grade,rows:[n]})}return y`<section class="school-block" id="${z(e.symbol)}" style="--accent:${i(e)}">
+          ${e.instructors.length>0?y`<p class="head-instructor">מדריך/ה ${e.instructors.join(` / `)}</p>`:``}
           <table class="data compact classes${e.classes.length>14?` dense`:``}">
             <thead>
               <tr><th>שכבה</th><th>כיתה</th><th>תלמידים</th>${L.map(e=>y`<th class="metric-group">${e.heading}</th>`)}</tr>
